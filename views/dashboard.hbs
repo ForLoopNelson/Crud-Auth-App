@@ -1,7 +1,7 @@
 <h6>DASHBOARD</h6>
 <h3>Welcome {{name}}</h3>
 <p>Here are your stories</p>
-{{!-- {{#if stories}}
+{{#if stories}}
   <table class="striped">
     <thead>
       <tr>
@@ -15,7 +15,7 @@
       {{#each stories}}
         <tr>
           <td><a href="/stories/{{_id}}">{{title}}</a></td>
-          <td>{{formatDate createdAt "MMMM Dd YYYY, h:mm:ss a"}}</td>
+          <td>{{formatDate createdAt "MMMM Do YYYY, h:mm:ss a"}}</td>
           <td><span class="dash-status">{{status}}</span></td>
           <td>
             <a href="/stories/edit/{{_id}}" class="btn btn-float">
@@ -35,4 +35,4 @@
   </table>
 {{else}}
   <p>You have not created any stories. Add one now!</p>
-{{/if}} --}}
+{{/if}}
