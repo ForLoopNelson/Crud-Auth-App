@@ -21,8 +21,8 @@ connectDB()
 const app = express()
 
 //BODY PARSER
-// app.use(express.urlencoded({ extended: false }))
-// app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
 // Method override
 app.use(
@@ -42,17 +42,30 @@ if (process.env.NODE_ENV === "development") {
 }
 
 //HELPERS
-// const {
-//   formatDate,
-//   stripTags,
-//   truncate,
-//   editIcon,
-//   select,
-// } = require("./helpers/hbs")
+const {
+  formatDate,
+  stripTags,
+  truncate,
+  editIcon,
+  select,
+} = require("./helpers/hbs")
 
 // HandleBars
 // add .engine after exphbs
-app.engine(".hbs", exphbs.engine({ defaultLayout: "main", extname: ".hbs" }))
+app.engine(
+  ".hbs",
+  exphbs.engine({
+    helpers: {
+      formatDate,
+      stripTags,
+      truncate,
+      editIcon,
+      select,
+    },
+    defaultLayout: "main",
+    extname: ".hbs",
+  })
+)
 app.set("view engine", ".hbs")
 
 // Session Middleware
